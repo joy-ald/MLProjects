@@ -1,0 +1,44 @@
+import seaborn as sns
+# importing datasets, KMeans, iris data
+from sklearn import datasets
+from sklearn.cluster import KMeans
+import sklearn.metrics as sm
+import seaborn as sns
+import pandas as pd
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn.preprocessing import LabelEncoder
+from sklearn.cluster import KMeans
+from sklearn.cluster import AgglomerativeClustering
+from sklearn.metrics import silhouette_score
+from sklearn.metrics import adjusted_rand_score
+from sklearn import metrics
+from scipy.cluster.hierarchy import linkage, dendrogram
+
+glass = pd.read_csv("glassClass.csv")
+glass.head(5)
+le = LabelEncoder()
+le.fit(glass['Type'])
+glass['Type'] = le.transform(glass['Type'])
+X= glass[['RI','Na','Mg','Al','Si','K','Ca','Ba','Fe']]
+g_matrix = pd.DataFrame(X)
+
+#cluster modelling
+cluster_model = AgglomerativeClustering(n_clusters=3, affinity='euclidean', linkage='ward')
+cluster_labels = cluster_model.fit_predict(g_matrix)
+glass_predictor =  pd.DataFrame(X)
+#glass_predictor.head(5)
+
+g['pred'] = cluster_labels
+glass.head(5)
+sm.accuracy_score(g.Type, cluster_model.labels_)
+metrics.adjusted_rand_score(g.Type, cluster_model.labels_)
+#-- to show the clustters use command below
+#cg = sns.clustermap(glass)
+
+#--- Thisis the right shape, but how to calculate the distances 
+cg = sns.clustermap(glass_predictor.corr())
+plt.show()
+
