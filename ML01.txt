@@ -1,0 +1,33 @@
+%%  linear regression model
+from sklearn.linear.model import LinearRegression
+lr = LinearRegression()
+lr.fit(scaled_x_train,y_train)
+
+predslr = lr.predict(scaled_x_test)
+
+modelresults(predslr)
+
+
+from sklearn.svm import SVR
+from sklearn.model_selection import GridSearchCV
+
+svrmodel = SVR()
+param_gridsvr = ['C':[.001,.01,.1,.5,1],'kernel':['linear','rbf','poly'],'gamma':['scale','auto'],'degree':[2,3,45]]
+gridsvr = GridSearchCV(svrmodel, param_gridsvr)
+gridsvr.fit(scaled_x_train, y_train)
+print('Best parameters for model is{}'.format(gridsvr.best_params))
+
+
+%% random forest regressor model
+
+predsgridsvr = gridsvr.predict(scaled_x_test)
+modelresults(predsgridsvr)
+
+from sklearn.ensemble import RandomForestRegressor
+rfrmodel = RandomForestRegressor()
+param_gridrfr = {'bootstrap':[True],'max_depth': [5,10,15], 'max features': ['auto','log2'],'n_estimators': [2,3,4,5,6,7,8,9,10]}
+gridrfr = GridSearchCV(rfrmodel,param_gridrfr)
+gridrfr.fit(scaled_x_train,y_train)
+
+predsgridrfr = gridrfr.predict(scaled_x_test)
+modelresults(predsgridrfr)
