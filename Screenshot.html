@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Snapshot</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <style>
+        /* Example styles for content */
+        #content {
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <!-- Content to capture -->
+        <h1>Hello, world!</h1>
+        <p>This is a sample content to capture.</p>
+    </div>
+    <script>
+        // Function to take a snapshot
+        function takeSnapshot() {
+            html2canvas(document.body).then(canvas => {
+                // Create an image from the canvas
+                const img = canvas.toDataURL('image/png');
+
+                // Create a link element and simulate a click to download the image
+                const link = document.createElement('a');
+                link.href = img;
+                link.download = 'snapshot.png';
+                link.click();
+            });
+        }
+
+        // Automatically take a snapshot when the page is fully loaded
+        window.addEventListener('load', takeSnapshot);
+    </script>
+</body>
+</html>
