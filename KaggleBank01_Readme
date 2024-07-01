@@ -1,0 +1,12 @@
+# This ML project uses the Kaggle Bank Term Deposit Subscription data with more than 11,000 data points.
+# Classifying whether or not a customer subscribes to the term deposit.
+https://www.kaggle.com/datasets/neerajkumarpaikra/bank-term-deposit-subscription-dataset
+
+
+# Variables are age,balance,duration,day, job,loan,housing,marital status,poutcome, contact,pdays,previous,month,campaign,education
+# Data is not biased for any variable.
+# EDA - bargraphs, boxplot, stats and distributions for insights and generate ideas for feature engineering.
+
+# In Feature engineering I used one hot encoding, log transformation (balance, age and duration), removed outliers, new feature for clients.
+# category for low probability and high probability items based on data analysis
+# Achieved 85.1% accuracy with XGBoost. 84.7% with RF
