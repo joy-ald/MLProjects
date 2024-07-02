@@ -6,7 +6,7 @@ https://www.kaggle.com/datasets/neerajkumarpaikra/bank-term-deposit-subscription
 
 # Variables are age,balance,duration,day, job,loan,housing,marital status,poutcome, contact,pdays,previous,month,campaign,education
 # Data is not biased for any variable.
-# EDA - bargraphs, boxplot, stats and distributions for insights and generate ideas for feature engineering.
+# EDA - bargraphs, boxplot, descriptive stats and distributions for insights and generate ideas for feature engineering.
 
 # In Feature engineering I used one hot encoding, log transformation (balance, age and duration), removed outliers, new feature for clients.
 # category for low probability and high probability items based on data analysis
