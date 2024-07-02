@@ -1,4 +1,5 @@
 # This ML project uses the Kaggle Bank Term Deposit Subscription data with more than 11,000 data points.
+# Most of EDA was adopted from Codes from CODESTUDIO and some of the plots were modified.
 # Classifying whether or not a customer subscribes to the term deposit.
 https://www.kaggle.com/datasets/neerajkumarpaikra/bank-term-deposit-subscription-dataset
 
