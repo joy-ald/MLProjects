@@ -1,0 +1,24 @@
+import threading
+import time
+
+# Function that will run in each thread
+def thread_task(thread_name, count):
+    for i in range(count):
+        time.sleep(1)  # Simulating a time-consuming task
+        print(f"{thread_name} - Count: {i + 1}")
+
+# List to hold threads
+threads = []
+
+# Creating threads
+for i in range(5):  # Create 5 threads
+    thread_name = f"Thread-{i + 1}"
+    thread = threading.Thread(target=thread_task, args=(thread_name, 5))
+    threads.append(thread)
+    thread.start()  # Start the thread
+
+# Wait for all threads to complete
+for thread in threads:
+    thread.join()
+
+print("All threads have finished executing.")
